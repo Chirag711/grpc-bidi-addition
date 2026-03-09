@@ -59,20 +59,18 @@ func main() {
 
 	}()
 
-	numbers := []int32{10, 20, 5, 15}
+	numbers := []int32{10, 20, 5, 15, 56, 56, 56, 34, 2345234, 2342, 3423, 4234, 32423, 42}
 
 	for _, num := range numbers {
-
 		fmt.Println("Sending:", num)
-
 		err := stream.Send(&pb.NumberRequest{
 			Number: num,
 		})
-
 		if err != nil {
 			log.Fatal(err)
 		}
 		time.Sleep(1 * time.Second)
+
 	}
 
 	stream.CloseSend()
